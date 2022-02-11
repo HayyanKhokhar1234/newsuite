@@ -55,7 +55,7 @@ def private_key(n,e):
 #encryption time baby
 
 def encryption(string,e,n):
-    word=list[]
+    word=list()
     for i in string:
         p=(alphabet[i]**e)%n
         word.append(p)
