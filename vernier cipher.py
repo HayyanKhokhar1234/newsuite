@@ -4,6 +4,9 @@ class VernierCipher:
         key = list(key)
         if len(string) == len(key):
             return (key)
+        elif len(key)>len(string):
+            key=key[0:len(string)]
+
         else:
             for i in range(len(string) - len(key)):
                 key.append(key[i % len(key)])
@@ -25,9 +28,9 @@ class VernierCipher:
         return ("".join(orig_text))
 
 
-
-a=VernierCipher.generateKey('Hello, my name is Hayyan.','B')
-k=VernierCipher.encryption('Hello, my name is Hayyan.',a)
+string='Apple'
+a=VernierCipher.generateKey(string,'Banana')
+k=VernierCipher.encryption(string,a)
 e=VernierCipher.decryption(k,a)
 print(k)
 print(e)

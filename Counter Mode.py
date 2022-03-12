@@ -1,5 +1,5 @@
 #Have an initial constant value, and each time, you increment the value that you shift by one
-alphabet={
+alphabet1={
     'A':1,
     'B':2,
     'C':3,
@@ -28,25 +28,60 @@ alphabet={
     'Z':26
 
 }
+alphabet2={
+    1:'A',
+    2:'B',
+    3:'C',
+    4:'D',
+    5:'E',
+    6:'F',
+    7:'G',
+    8:'H',
+    9:'I',
+    10:'J',
+    11:'K',
+    12:'L',
+    13:'M',
+    14:'N',
+    15:'O',
+    16:'P',
+    17:'Q',
+    18:'R',
+    19:'S',
+    20:'T',
+    21:'U',
+    22:'V',
+    23:'W',
+    24:'X',
+    25:'Y',
+    26:'Z'
 
-def encrypt(n,string):
-    encrypted=""
-    constant=n
-    for i in len(string):
-        encrypted.join(alphabet[string[i+n]])
-        n+=1
-    return(encrypted)
-def decrypt(string,n):
-    total=n+len(string)
-    decrypted=""
-    for i in len(string):
-        decrypted.join(alphabet[string[i-total]])
-        total-= 1
+}
+class Countermode:
+    def encrypt(n,string):
+        encrypted=""
+        constant=n
+        for i in range(len(string)):
+            print(n, i)
+            print(alphabet2[alphabet1[string[i]]+n])
+            encrypted=encrypted+(alphabet2[alphabet1[string[i]]+n])
+            print(encrypted)
+            n+=1
+        return(encrypted)
+    def decrypt(string,n):
+        decrypted=""
+        for i in range(len(string)):
+            print(string[i])
+            decrypted=decrypted+(alphabet2[alphabet1[string[i]]-n])
+            n+= 1
+        print(decrypted)
+        return decrypted
 
-    return decrypted
 
 
 
 
-
-string=input('Enter word')
+string='ABC'
+key=4
+c=Countermode.encrypt(4,string)
+Countermode.decrypt(c,4)
