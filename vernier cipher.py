@@ -1,35 +1,35 @@
-def generateKey(string, key):
-    key = list(key)
-    if len(string) == len(key):
-        return (key)
-    else:
-        for i in range(len(string) - len(key)):
-            key.append(key[i % len(key)])
-    print(key)
-    return ("".join(key))
 
-def encryption(string, key):
-    encrypt_text = []
-    for i in range(len(string)):
-        x = (ord(string[i]) + ord(key[i])) % 26
-        x+=ord('A')
-        encrypt_text.append(chr(x))
-    return ("".join(encrypt_text))
+class VernierCipher:
+    def generateKey(string, key):
+        key = list(key)
+        if len(string) == len(key):
+            return (key)
+        else:
+            for i in range(len(string) - len(key)):
+                key.append(key[i % len(key)])
+        print(key)
+        return ("".join(key))
 
-def decryption(encrypt_text, key):
-    orig_text = []
-    for i in range(len(encrypt_text)):
-        x = (ord(encrypt_text[i]) - ord(key[i]) + 26) % 26
-        orig_text.append(chr(x))
-        x+=ord('A')
-    return ("".join(orig_text))
+    def encryption(string, key):
+        encrypt_text = []
+        for i in range(len(string)):
+            x = (ord(string[i]) + ord(key[i]))
+            encrypt_text.append(chr(x))
+        return ("".join(encrypt_text))
 
-if __name__ == "__main__":
-    string = input("Enter the message: ")
-    keyword = input("Enter the keyword: ")
-    key = generateKey(string, keyword)
-    encrypt_text = encryption(string, key)
-    print("Encrypted message:", encrypt_text)
-    print("Decrypted message:", decryption(encrypt_text, key))
+    def decryption(encrypt_text, key):
+        orig_text = []
+        for i in range(len(encrypt_text)):
+            x = (ord(encrypt_text[i]) - ord(key[i]))
+            orig_text.append(chr(x))
+        return ("".join(orig_text))
 
-print('Look at this commit lol hi loe ok.')
+
+
+a=VernierCipher.generateKey('Hello, my name is Hayyan.','B')
+k=VernierCipher.encryption('Hello, my name is Hayyan.',a)
+e=VernierCipher.decryption(k,a)
+print(k)
+print(e)
+print(ord('A'))
+print(chr(ord('A')))
