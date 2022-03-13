@@ -25,8 +25,7 @@ alphabet1={
     'W':23,
     'X':24,
     'Y':25,
-    'Z':26
-
+    'Z':0
 }
 alphabet2={
     1:'A',
@@ -54,7 +53,7 @@ alphabet2={
     23:'W',
     24:'X',
     25:'Y',
-    26:'Z'
+    0:'Z'
 
 }
 class Countermode:
@@ -62,26 +61,29 @@ class Countermode:
         encrypted=""
         constant=n
         for i in range(len(string)):
-            print(n, i)
-            print(alphabet2[alphabet1[string[i]]+n])
-            encrypted=encrypted+(alphabet2[alphabet1[string[i]]+n])
-            print(encrypted)
+            if string[i]==" ":
+                encrypted= encrypted+ " "
+                continue
+            p=string[i]
+            encrypted=encrypted+(alphabet2[((alphabet1[string[i]]+n)%26)])
             n+=1
         return(encrypted)
     def decrypt(string,n):
         decrypted=""
         for i in range(len(string)):
-            print(string[i])
-            decrypted=decrypted+(alphabet2[alphabet1[string[i]]-n])
-            n+= 1
-        print(decrypted)
+            if string[i]==" ":
+                decrypted=decrypted+" "
+                continue
+            else:
+                decrypted=decrypted+(alphabet2[((alphabet1[string[i]]-n)%26)])
+                n+= 1
         return decrypted
 
 
 
 
 
-string='ABC'
-key=4
-c=Countermode.encrypt(4,string)
-Countermode.decrypt(c,4)
+string='APPLE'
+key=25
+c=Countermode.encrypt(key,string)
+Countermode.decrypt(c,key)

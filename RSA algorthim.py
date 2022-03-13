@@ -30,11 +30,26 @@ alphabet={
 
 }
 
-
-
+def check_prime(num):
+    check=False
+    for i in range(num-1):
+        if i==0:
+            continue
+        elif i == 1:
+            continue
+        if num%i ==0:
+            return check
+    check = True
+    return check
 
 def generate_prime(number1,number2):
-    n=int(number2-1)*int(number2-1)
+    one=check_prime(number1)
+    two=check_prime(number2)
+    if one ==False:
+        return None
+    elif two ==false:
+        return None
+    n = int(number2 - 1) * int(number2 - 1)
     return (n)
     #public key
 
@@ -52,7 +67,6 @@ def private_key(n,e):
             d=i
             return(d)
 
-#encryption time baby
 
 def encryption(string,e,n):
     word=list()
