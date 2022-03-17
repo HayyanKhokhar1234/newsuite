@@ -30,57 +30,64 @@ alphabet={
 
 }
 
-def check_prime(num):
-    check=False
-    for i in range(num-1):
-        if i==0:
-            continue
-        elif i == 1:
-            continue
-        if num%i ==0:
-            return check
-    check = True
-    return check
 
-def generate_prime(number1,number2):
-    one=check_prime(number1)
-    two=check_prime(number2)
-    if one ==False:
-        return None
-    elif two ==false:
-        return None
-    n = int(number2 - 1) * int(number2 - 1)
-    return (n)
+
+class RSA:
+
+    def check_prime(num):
+        check = False
+        for i in range(num - 1):
+            if i == 0:
+                continue
+            elif i == 1:
+                continue
+            if num % i == 0:
+                return check
+        check = True
+        return check
+
+    def generate_prime(number1,number2):
+        one=RSA.check_prime(number1)
+        two=RSA.check_prime(number2)
+        if one ==False:
+            return None
+        elif two ==False:
+            return None
+        n = int(number1 - 1) * int(number2 - 1)
+        return (n)
     #public key
 
-def generate_public(n):
-    for i in range(100000000000):
-        if n%i==0:
-            continue
-        else:
-            e=i
-    return e
+    def generate_public(n):
+        for i in range(100000000000):
+            if (n%i)==0:
+                continue
+            else:
+                e=i
+        return e
 
-def private_key(n,e):
-    for i in range(1000000):
-        if(i*e)%n==1:
-            d=i
-            return(d)
+    def private_key(n,e):
+        for i in range(1000000):
+            if(i*e)%n==1:
+                d=i
+                return(d)
 
+    def encryption(string,e,n):
+        word=list()
+        for i in string:
+            p=(alphabet[i]**e)%n
+            word.append(p)
+        return word
 
-def encryption(string,e,n):
-    word=list()
-    for i in string:
-        p=(alphabet[i]**e)%n
-        word.append(p)
-    return word
-
-def decryption(word,d,n):
-    letters=''
-    for i in word:
-        p=(i**d)%n
-        letters.join(alphabet[p])
-    return letters
-
+    def decryption(word,d,n):
+        letters=''
+        for i in word:
+            p=(i**d)%n
+            letters.join(alphabet[p])
+        return letters
 
 
+
+print(RSA.generate_prime(3,5))
+r=RSA.generate_prime(3,5)
+f=RSA.generate_public(r)
+e=RSA.private_key(r,f)
