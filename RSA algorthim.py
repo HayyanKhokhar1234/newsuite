@@ -95,9 +95,10 @@ class RSA:
             if i==0:
                 continue
             elif (n%i)==0:
-                print(i)
+
                 continue
             else:
+                print(i)
                 e=i
                 return e
         return('No number which is not a factor')
@@ -111,6 +112,9 @@ class RSA:
     def encryption(string,e,n):
         word=list()
         for i in string:
+            if i==' ':
+                word.append(i)
+                continue
             p=(alphabet[i]**e)%n
             print(i)
             word.append(p)
@@ -120,6 +124,9 @@ class RSA:
     def decryption(word,d,n):
         letters=''
         for i in word:
+            if i==' ':
+                letters=letters+ ' '
+                continue
             p=(i**d)%n
             letters=letters+alphabet2[p]
         print(letters)
@@ -127,11 +134,11 @@ class RSA:
 
 
 
-print(RSA.generate_prime(3,5))
-N=RSA.N(3,5)
-r=RSA.generate_prime(3,5)
+print(RSA.generate_prime(7,17))
+N=RSA.N(7,17)
+r=RSA.generate_prime(7,17)
 f=RSA.generate_public(r)
 e=RSA.private_key(r,f)
 
-word=RSA.encryption('HELLO',f,N)
+word=RSA.encryption('SHINGEKI NO KYOJIN',f,N)
 wordz=RSA.decryption(word,e,N)
