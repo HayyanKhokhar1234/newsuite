@@ -30,9 +30,42 @@ alphabet={
 
 }
 
+alphabet2={
+    1:'A',
+    2:'B',
+    3:'C',
+    4:'D',
+    5:'E',
+    6:'F',
+    7:'G',
+    8:'H',
+    9:'I',
+    10:'J',
+    11:'K',
+    12:'L',
+    13:'M',
+    14:'N',
+    15:'O',
+    16:'P',
+    17:'Q',
+    18:'R',
+    19:'S',
+    20:'T',
+    21:'U',
+    22:'V',
+    23:'W',
+    24:'X',
+    25:'Y',
+    0:'Z'
+
+}
+
 
 
 class RSA:
+    def N(num1,num2):
+        return (num1*num2)
+
 
     def check_prime(num):
         check = False
@@ -59,35 +92,46 @@ class RSA:
 
     def generate_public(n):
         for i in range(100000000000):
-            if (n%i)==0:
+            if i==0:
+                continue
+            elif (n%i)==0:
+                print(i)
                 continue
             else:
                 e=i
-        return e
-
+                return e
+        return('No number which is not a factor')
     def private_key(n,e):
         for i in range(1000000):
             if(i*e)%n==1:
                 d=i
+                print(d)
                 return(d)
 
     def encryption(string,e,n):
         word=list()
         for i in string:
             p=(alphabet[i]**e)%n
+            print(i)
             word.append(p)
+        print(word)
         return word
 
     def decryption(word,d,n):
         letters=''
         for i in word:
             p=(i**d)%n
-            letters.join(alphabet[p])
+            letters=letters+alphabet2[p]
+        print(letters)
         return letters
 
 
 
 print(RSA.generate_prime(3,5))
+N=RSA.N(3,5)
 r=RSA.generate_prime(3,5)
 f=RSA.generate_public(r)
 e=RSA.private_key(r,f)
+
+word=RSA.encryption('HELLO',f,N)
+wordz=RSA.decryption(word,e,N)
