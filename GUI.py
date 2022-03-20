@@ -15,6 +15,7 @@ def encrypt():
         print(encryption.get("1.0", "end"))
         result = RSAalgo.encryption(encryption.get("1.0", "end"), e, N)
         print(result)
+
         encryption.delete('1.0', 'end')
         encryption.insert('1.0', result)
         tk.Label(encryption_screen,text=f"Your private Key is {d}").place(x=250,y=200)
@@ -27,9 +28,13 @@ def encrypt():
     if variable.get()=='Vernier Cipher':
         key=p1.get('1.0','end')
         print(key)
-        result=VernierCipher.VernierCipher.generateKey(encryption.get("1.0", "end"),key)
+        key2=VernierCipher.VernierCipher.generateKey(encryption.get("1.0", "end"),key)
+        result = VernierCipher.VernierCipher.encryption(encryption.get("1.0", "end"),key2)
         encryption.delete('1.0', 'end')
         encryption.insert('1.0', result)
+        print(result)
+        tk.Label(encryption_screen, text=f"Your private Key is {key2}").place(x=250, y=200)
+
 
 def decrypt():
     if variable2.get()=='RSA':
@@ -47,7 +52,7 @@ def decrypt():
         decryption.insert('1.0', result)
     if variable2.get()=='Vernier Cipher':
         key=p3.get('1.0','end')
-        result=VernierCipher.VernierCipher.decryption(decryption.get('1.0','end'))
+        result=VernierCipher.VernierCipher.decryption(decryption.get('1.0','end'),key)
         decryption.delete('1.0', 'end')
         decryption.insert('1.0', result)
 
