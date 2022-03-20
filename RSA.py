@@ -64,7 +64,7 @@ alphabet2={
 
 
 
-class RSA:
+class RSAalgo:
     #Finds product of two primes
     def N(num1,num2):
         return (num1*num2)

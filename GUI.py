@@ -1,23 +1,23 @@
 import tkinter as tk
 import RSA, VernierCipher, CounterMode
-
+from RSA import RSAalgo
 
 def encrypt():
     print(variable.get())
     print('Hi')
-    print(encryption.get("1.0","end"))
     print(p1.get('1.0', 'end'))
-    print(p2.get('1/.0', 'end'))
+    print(p2.get('1.0', 'end'))
     if variable.get() == 'RSA':
         int1 = int(p1.get("1.0", "end"))
         int2 = int(p2.get("1.0", "end"))
 
-        N = RSA.N(p1, p2)
-        r = RSA.generate_prime(p1, p2)
-        e = RSA.generate_public(r)
-        d = RSA.private_key(r, e)
 
-        result = RSA.encryption(encryption.get("1.0", "end"), e, N)
+        N = RSAalgo.N(int1, int2)
+        r = RSAalgo.generate_prime(int1, int2)
+        e = RSAalgo.generate_public(r)
+        d = RSAalgo.private_key(r, e)
+
+        result = RSAalgo.encryption(encryption.get("1.0", "end"), e, N)
         print(result)
         encryption.delete(0, 'end')
         encryption.insert(0, result)
@@ -59,10 +59,14 @@ def Encryption():
     variable=tk.StringVar()
     drop=tk.OptionMenu(encryption_screen, variable, 'Vernier Cipher','RSA','Counter Mode','Ceaser Cipher',command=option_changed).place(x=0,y=200)
     print(variable.get())
-    p1=tk.Text(encryption_screen, height=2,width=5).place(x=70,y=250)
-    p2=tk.Text(encryption_screen, height=2, width=5).place(x=140, y=250)
 
-    encryption = tk.Text(encryption_screen, height=20, width=40).place(x=0, y=300)
+    p1=tk.Text(encryption_screen, height=2,width=5)
+    p1.place(x=70,y=250)
+    p2=tk.Text(encryption_screen, height=2, width=5)
+    p2.place(x=140,y=250)
+
+    encryption = tk.Text(encryption_screen, height=20, width=40)
+    encryption.place(x=0,y=300)
     tk.Button(encryption_screen, text='Encrypt', bg='Green', command=encrypt).place(x=0, y=250)
 
 
