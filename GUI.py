@@ -36,7 +36,7 @@ def decrypt():
         decryption.insert('1.0',result)
     if variable2.get()=='Counter Mode':
         int3=int(p3.get('1.0','end'))
-        result=CounterMode.Countermode.decrypt(decryption.get('1.0','end'))
+        result=CounterMode.Countermode.decrypt(int3,decryption.get('1.0','end'))
         decryption.delete('1.0', 'end')
         decryption.insert('1.0', result)
 
