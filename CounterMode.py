@@ -61,6 +61,8 @@ class Countermode:
         encrypted=""
         constant=n
         for i in range(len(string)):
+            if string[i]=='\n':
+                break
             if string[i]==" ":
                 encrypted= encrypted+ " "
                 continue

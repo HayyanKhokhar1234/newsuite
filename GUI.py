@@ -20,6 +20,10 @@ def encrypt():
         tk.Label(encryption_screen,text=f"Your private Key is {d}").place(x=250,y=200)
 
     if variable.get()=='Counter Mode':
+        int1 = int(p1.get("1.0", "end"))
+        result=CounterMode.Countermode.encrypt(int1,encryption.get("1.0", "end"))
+        encryption.delete('1.0', 'end')
+        encryption.insert('1.0', result)
 
 def decrypt():
     if variable2.get()=='RSA':
@@ -30,7 +34,11 @@ def decrypt():
         result=RSAalgo.decryption(decryption.get('1.0','end'),int5,N)
         decryption.delete('1.0','end')
         decryption.insert('1.0',result)
-
+    if variable2.get()=='Counter Mode':
+        int3=int(p3.get('1.0','end'))
+        result=CounterMode.Countermode.decrypt(decryption.get('1.0','end'))
+        decryption.delete('1.0', 'end')
+        decryption.insert('1.0', result)
 
 
 
