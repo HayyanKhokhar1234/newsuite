@@ -30,7 +30,7 @@ def Encryption():
 
 
     variable2=tk.StringVar()
-    variable.set('Select An encryption')
+    variable2.set('Select An encryption')
     tk.Button(encryption_screen, text='Decrypt', bg='Red').place(x=750, y=250)
     drop2=tk.OptionMenu(encryption_screen, variable2, 'Vernier Cipher','RSA','Counter Mode','Ceaser Cipher',command=option_changed2).place(x=700,y=200)
     p3=tk.Text(encryption_screen,height=2,width=5).place(x=680,y=250)
