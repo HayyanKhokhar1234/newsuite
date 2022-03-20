@@ -138,13 +138,14 @@ class RSA:
         return letters
 
 
-num1=3
-num2=5
-print(RSA.generate_prime(num1,num2))
-N=RSA.N(num1,num2)
-r=RSA.generate_prime(num1,num2)
-e=RSA.generate_public(r)
-d=RSA.private_key(r,e)
+#num1=3
+#num2=5
+#print(RSA.generate_prime(num1,num2))
+#N=RSA.N(num1,num2)
+#r=RSA.generate_prime(num1,num2)
 
-word=RSA.encryption('APPLE',e,N)
-wordz=RSA.decryption(word,d,N)
+#e=RSA.generate_public(r)
+#d=RSA.private_key(r,e)
+
+#word=RSA.encryption('APPLE',e,N)
+#wordz=RSA.decryption(word,d,N)
