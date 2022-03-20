@@ -73,6 +73,8 @@ class Countermode:
     def decrypt(string,n):
         decrypted=""
         for i in range(len(string)):
+            if string[i]=='\n':
+                break
             if string[i]==" ":
                 decrypted=decrypted+" "
                 continue
