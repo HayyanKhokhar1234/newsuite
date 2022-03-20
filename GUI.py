@@ -24,6 +24,12 @@ def encrypt():
         result=CounterMode.Countermode.encrypt(int1,encryption.get("1.0", "end"))
         encryption.delete('1.0', 'end')
         encryption.insert('1.0', result)
+    if variable.get()=='Vernier Cipher':
+        key=p1.get('1.0','end')
+        print(key)
+        result=VernierCipher.VernierCipher.generateKey(encryption.get("1.0", "end"),key)
+        encryption.delete('1.0', 'end')
+        encryption.insert('1.0', result)
 
 def decrypt():
     if variable2.get()=='RSA':
@@ -39,7 +45,11 @@ def decrypt():
         result=CounterMode.Countermode.decrypt(decryption.get('1.0','end'),int3)
         decryption.delete('1.0', 'end')
         decryption.insert('1.0', result)
-
+    if variable2.get()=='Vernier Cipher':
+        key=p3.get('1.0','end')
+        result=VernierCipher.VernierCipher.decryption(decryption.get('1.0','end'))
+        decryption.delete('1.0', 'end')
+        decryption.insert('1.0', result)
 
 
 

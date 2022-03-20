@@ -28,11 +28,11 @@ class VernierCipher:
         return ("".join(orig_text))
 
 
-string='Apple'
-a=VernierCipher.generateKey(string,'Banana')
-k=VernierCipher.encryption(string,a)
-e=VernierCipher.decryption(k,a)
-print(k)
-print(e)
-print(ord('A'))
-print(chr(ord('A')))
+# string='Apple'
+# a=VernierCipher.generateKey(string,'Banana')
+# k=VernierCipher.encryption(string,a)
+# e=VernierCipher.decryption(k,a)
+# print(k)
+# print(e)
+# print(ord('A'))
+# print(chr(ord('A')))
