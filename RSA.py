@@ -83,8 +83,8 @@ class RSAalgo:
         return check
     #generates a number which is equal to (primenumber-1)*(primenumber-2), and check if the numbers are prime.
     def generate_prime(number1,number2):
-        one=RSA.check_prime(number1)
-        two=RSA.check_prime(number2)
+        one=RSAalgo.check_prime(number1)
+        two=RSAalgo.check_prime(number2)
         if one ==False:
             return None
         elif two ==False:
@@ -117,9 +117,12 @@ class RSAalgo:
     def encryption(string,e,N):
         word=list()
         for i in string:
-            if i==' ':
+            if i=='\n':
+                continue
+            elif i==' ':
                 word.append(i)
                 continue
+
             p=(alphabet[i]**e)%N
             print(i)
             word.append(p)
@@ -127,12 +130,14 @@ class RSAalgo:
         return word
     #Decrypts data by mapping each number to letter then appending it to string.
     def decryption(word,d,N):
+        word=word.split(' ')
+        print(word)
         letters=''
         for i in word:
             if i==' ':
                 letters=letters+ ' '
                 continue
-            p=(i**d)%N
+            p=(int(i)**d)%N
             letters=letters+alphabet2[p]
         print(letters)
         return letters

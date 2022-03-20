@@ -3,10 +3,6 @@ import RSA, VernierCipher, CounterMode
 from RSA import RSAalgo
 
 def encrypt():
-    print(variable.get())
-    print('Hi')
-    print(p1.get('1.0', 'end'))
-    print(p2.get('1.0', 'end'))
     if variable.get() == 'RSA':
         int1 = int(p1.get("1.0", "end"))
         int2 = int(p2.get("1.0", "end"))
@@ -16,11 +12,27 @@ def encrypt():
         r = RSAalgo.generate_prime(int1, int2)
         e = RSAalgo.generate_public(r)
         d = RSAalgo.private_key(r, e)
-
+        print(encryption.get("1.0", "end"))
         result = RSAalgo.encryption(encryption.get("1.0", "end"), e, N)
         print(result)
-        encryption.delete(0, 'end')
-        encryption.insert(0, result)
+        encryption.delete('1.0', 'end')
+        encryption.insert('1.0', result)
+        tk.Label(encryption_screen,text=f"Your private Key is {d}").place(x=250,y=200)
+
+    if variable.get()=='Counter Mode':
+
+def decrypt():
+    if variable2.get()=='RSA':
+        int3=int(p3.get('1.0','end'))
+        int4=int(p4.get('1.0','end'))
+        int5=int(p5.get('1.0','end'))
+        N=RSAalgo.N(int3,int4)
+        result=RSAalgo.decryption(decryption.get('1.0','end'),int5,N)
+        decryption.delete('1.0','end')
+        decryption.insert('1.0',result)
+
+
+
 
 
 def encryption_back():
@@ -33,7 +45,9 @@ def Encryption():
     global p2
     global p3
     global p4
+    global p5
     global encryption
+    global decryption
     global variable
     global variable2
     #This is a function used to see which algorthim is selected from drop down menu
@@ -74,11 +88,19 @@ def Encryption():
 
     variable2=tk.StringVar()
     variable2.set('Select An encryption')
-    tk.Button(encryption_screen, text='Decrypt', bg='Red').place(x=750, y=250)
+
+    tk.Button(encryption_screen, text='Decrypt', bg='Red',command=decrypt).place(x=750, y=250)
     drop2=tk.OptionMenu(encryption_screen, variable2, 'Vernier Cipher','RSA','Counter Mode','Ceaser Cipher',command=option_changed2).place(x=700,y=200)
-    p3=tk.Text(encryption_screen,height=2,width=5).place(x=680,y=250)
-    p4=tk.Text(encryption_screen,height=2,width=5).place(x=630,y=250)
-    decryption=tk.Text(encryption_screen,height=20,width=40).place(x=450,y=300)
+    p3=tk.Text(encryption_screen,height=2,width=5)
+    p3.place(x=680,y=250)
+    p4=tk.Text(encryption_screen,height=2,width=5)
+    p4.place(x=640,y=250)
+    p5=tk.Text(encryption_screen,height=2,width=5)
+    p5.place(x=590,y=250)
+
+    decryption=tk.Text(encryption_screen,height=20,width=40)
+    decryption.place(x=450,y=300)
+
 
 
 
