@@ -1,5 +1,6 @@
 #Adding Encryption for sending numbers
 
+#initial alphabet dictionary, this is for mapping values of letters to numbers
 alphabet={
     'A':1,
     'B':2,
@@ -26,10 +27,11 @@ alphabet={
     'W':23,
     'X':24,
     'Y':25,
-    'Z':26
+    'Z':0
 
 }
 
+#Second alphabet dictionary, used for mapping numbers to letters, used in decryption.
 alphabet2={
     1:'A',
     2:'B',
@@ -63,10 +65,11 @@ alphabet2={
 
 
 class RSA:
+    #Finds product of two primes
     def N(num1,num2):
         return (num1*num2)
 
-
+    #Used to check if two numbers are prime
     def check_prime(num):
         check = False
         for i in range(num - 1):
@@ -78,7 +81,7 @@ class RSA:
                 return check
         check = True
         return check
-
+    #generates a number which is equal to (primenumber-1)*(primenumber-2), and check if the numbers are prime.
     def generate_prime(number1,number2):
         one=RSA.check_prime(number1)
         two=RSA.check_prime(number2)
@@ -89,7 +92,7 @@ class RSA:
         n = int(number1 - 1) * int(number2 - 1)
         return (n)
     #public key
-
+    #generates a public key which is used to encrypt the data
     def generate_public(n):
         for i in range(100000000000):
             if i==0:
@@ -102,43 +105,46 @@ class RSA:
                 e=i
                 return e
         return('No number which is not a factor')
+
+    #generates private key used to decrypt the data.
     def private_key(n,e):
         for i in range(1000000):
             if(i*e)%n==1:
                 d=i
                 print(d)
                 return(d)
-
-    def encryption(string,e,n):
+    #Encrypts the data by mapping each letter to integers then appending it to the list
+    def encryption(string,e,N):
         word=list()
         for i in string:
             if i==' ':
                 word.append(i)
                 continue
-            p=(alphabet[i]**e)%n
+            p=(alphabet[i]**e)%N
             print(i)
             word.append(p)
         print(word)
         return word
-
-    def decryption(word,d,n):
+    #Decrypts data by mapping each number to letter then appending it to string.
+    def decryption(word,d,N):
         letters=''
         for i in word:
             if i==' ':
                 letters=letters+ ' '
                 continue
-            p=(i**d)%n
+            p=(i**d)%N
             letters=letters+alphabet2[p]
         print(letters)
         return letters
 
 
+num1=3
+num2=5
+print(RSA.generate_prime(num1,num2))
+N=RSA.N(num1,num2)
+r=RSA.generate_prime(num1,num2)
+e=RSA.generate_public(r)
+d=RSA.private_key(r,e)
 
-print(RSA.generate_prime(7,17))
-N=RSA.N(7,17)
-r=RSA.generate_prime(7,17)
-f=RSA.generate_public(r)
-e=RSA.private_key(r,f)
-
-word=RSA.encryption('SHINGEKI NO KYOJIN',f,N)
-wordz=RSA.decryption(word,e,N)
+word=RSA.encryption('APPLE',e,N)
+wordz=RSA.decryption(word,d,N)
