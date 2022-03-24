@@ -73,8 +73,10 @@ class VernierCipher:
 
         else:
             for i in range(len(string) - len(key)):
-                if i=='\n':
-                    break
+                print(i)
+                print(string[i])
+                if string[i]=='\n':
+                    continue
                 key.append(key[i % len(key)])
         print(key)
         return ("".join(key))
@@ -85,6 +87,7 @@ class VernierCipher:
         for i in range(len(string)):
             if string[i]=='\n':
                 break
+            print(string[i])
             x = (alphabet[(string[i])] + alphabet[(key[i])])%26
             encrypt_text.append(alphabet2[x])
         return ("".join(encrypt_text))
@@ -96,7 +99,12 @@ class VernierCipher:
         for i in range(len(encrypt_text)):
 
             if encrypt_text[i]=='\n':
-                break
+                continue
+            if i=='{':
+                letters=letters+ ' '
+                continue
+            if i=='}':
+                continue
             x = (alphabet[(encrypt_text[i])] - alphabet[(key[i])])%26
             orig_text.append(alphabet2[x])
         return ("".join(orig_text))

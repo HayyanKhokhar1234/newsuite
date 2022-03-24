@@ -1,6 +1,3 @@
-#Adding Encryption for sending numbers
-
-#initial alphabet dictionary, this is for mapping values of letters to numbers
 alphabet={
     'A':1,
     'B':2,
@@ -136,6 +133,11 @@ class RSAalgo:
         for i in word:
             if i==' ':
                 letters=letters+ ' '
+                continue
+            if i=='{':
+                letters=letters+ ' '
+                continue
+            if i=='}':
                 continue
             p=(int(i)**d)%N
             letters=letters+alphabet2[p]
