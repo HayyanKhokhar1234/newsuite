@@ -1,22 +1,10 @@
 import tkinter as tk
 import RSA, VernierCipher, CounterMode
-import projectchat
-import Clientside
 from RSA import RSAalgo
 from threading import Thread
 from socket import AF_INET, socket, SOCK_STREAM
 
 
-
-
-def chatserver():
-
-
-
-
-    window.destroy()
-
-    Clientside.chatserver()
 
 
 def encrypt():
@@ -175,7 +163,7 @@ def main_screen():
     tk.Label(text='Cipher Suite', font=('Arial',25)).pack()
 
     tk.Button(text='Ecryption/Decryption Cipher', font=('Arial',25),bg='Green', fg='Red',height=5,command=Encryption).place(x=0,y=200)
-    tk.Button(text='Chatserver', font=('Arial',25),bg='Black', fg='White',height=5,width=15, command=chatserver).place(x=450,y=200)
+    tk.Button(text='Chatserver', font=('Arial',25),bg='Black', fg='White',height=5,width=15).place(x=450,y=200)
 
 
 
