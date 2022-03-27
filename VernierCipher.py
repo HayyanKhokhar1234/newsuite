@@ -105,12 +105,12 @@ class VernierCipher:
 
             if encrypt_text[i]=='\n':
                 continue
-            if i=='{':
+            if encrypt_text[i]=='{':
                 letters=letters+ ' '
                 continue
-            if i=='}':
+            if encrypt_text[i]=='}':
                 continue
-            if i==' ':
+            if encrypt_text[i]==' ':
                 orig_text.append(' ')
             x = (alphabet[(encrypt_text[i])] - alphabet[(key[i])])%26
             orig_text.append(alphabet2[x])
