@@ -112,6 +112,7 @@ class VernierCipher:
                 continue
             if encrypt_text[i]==' ':
                 orig_text.append(' ')
+                continue
             x = (alphabet[(encrypt_text[i])] - alphabet[(key[i])])%26
             orig_text.append(alphabet2[x])
         return ("".join(orig_text))
