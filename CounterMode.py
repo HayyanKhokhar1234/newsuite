@@ -57,6 +57,7 @@ alphabet2={
 
 }
 class Countermode:
+    #This is used to encrypt the string, where we essentnailly encrypt the data.
     def encrypt(n,string):
         encrypted=""
         constant=n
@@ -70,6 +71,7 @@ class Countermode:
             encrypted=encrypted+(alphabet2[((alphabet1[string[i]]+n)%26)])
             n+=1
         return(encrypted)
+    #This is used to decrypt the string, by looping through the string, and then decreasing the integer mapepd value of the letter by n which is a constant, and then incrementing n by one.
     def decrypt(string,n):
         decrypted=""
         for i in range(len(string)):

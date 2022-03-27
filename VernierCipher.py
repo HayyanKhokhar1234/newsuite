@@ -1,3 +1,5 @@
+
+#Alphabet dictionary mapping letters to integers, this is used for encrypting the text.
 alphabet={
     'A':1,
     'B':2,

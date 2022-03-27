@@ -1,3 +1,4 @@
+#This alphabet ditionary is used to map letters to integers to encrypt the text.
 alphabet={
     'A':1,
     'B':2,

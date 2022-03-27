@@ -125,7 +125,7 @@ def Encryption():
     #Button to decrypt text
     tk.Button(encryption_screen, text='Decrypt', bg='Red',command=decrypt).place(x=750, y=250)
     #Second drop down menu to select encryption algorthim
-    drop2=tk.OptionMenu(encryption_screen, variable2, 'Vernier Cipher','RSA','Counter Mode','Ceaser Cipher',command=option_changed2).place(x=700,y=200)
+    drop2=tk.OptionMenu(encryption_screen, variable2, 'Vernier Cipher','RSA','Counter Mode',command=option_changed2).place(x=700,y=200)
     #Text boxes to encrypt data.
     p3=tk.Text(encryption_screen,height=2,width=5)
     #p3 Another textbox used to enter a private key for RSA algorthim
