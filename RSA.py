@@ -119,7 +119,7 @@ class RSAalgo:
             elif i==' ':
                 word.append(i)
                 continue
-
+            #Takes the alphabet value of i and raises to the power of the public key with remainder of N
             p=(alphabet[i]**e)%N
             print(i)
             word.append(p)
