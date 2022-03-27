@@ -139,6 +139,8 @@ class RSAalgo:
                 continue
             if i=='}':
                 continue
+            if i=='}\n':
+                continue
             p=(int(i)**d)%N
             letters=letters+alphabet2[p]
         print(letters)

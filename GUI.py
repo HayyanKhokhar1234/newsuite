@@ -104,7 +104,7 @@ def Encryption():
     #Used to store the algorthim selected from drop down menu
     variable=tk.StringVar()
     #The drop down menu
-    drop=tk.OptionMenu(encryption_screen, variable, 'Vernier Cipher','RSA','Counter Mode','Ceaser Cipher',command=option_changed).place(x=0,y=200)
+    drop=tk.OptionMenu(encryption_screen, variable, 'Vernier Cipher','RSA','Counter Mode',command=option_changed).place(x=0,y=200)
     print(variable.get())
     #The texts used for encrypting data
     p1=tk.Text(encryption_screen, height=2,width=5)

@@ -63,6 +63,7 @@ alphabet2={
 
 
 class VernierCipher:
+    #Genertes the key to shift the string by
     def generateKey(string, key):
 
         key = list(key)
@@ -82,7 +83,7 @@ class VernierCipher:
         print(key)
         print('Hi')
         return ("".join(key))
-
+#Loops through the string and encrypts each letter
     def encryption(string, key):
         encrypt_text = []
 
@@ -96,7 +97,7 @@ class VernierCipher:
             x = (alphabet[(string[i])] + alphabet[(key[i])])%26
             encrypt_text.append(alphabet2[x])
         return ("".join(encrypt_text))
-
+#Runs the decryption, looping through each letters and getting the original letter
     def decryption(encrypt_text, key):
 
 
